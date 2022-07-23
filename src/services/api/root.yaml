@@ -1,0 +1,21 @@
+openapi: 3.0.0
+info:
+  title: API名
+  description: "API説明"
+  version: "1.0"
+  contact:
+    name: 問い合わせ
+    url: "https://example.com:1234" # 問い合わせ先URL
+    email: xxx@xxxxx.xx # 問い合わせ先メールアドレス
+  termsOfService: "https://example.com/terms_of_service" # 利用規約のページのURL
+servers:
+  - url: "https://example.com:1234"
+    description: development
+tags:
+  - name: test
+    description: テスト
+paths:
+  /test?id={id}:
+    $ref: ./paths/test/get/test.yaml
+  /test:
+    $ref: ./paths/test/test.yaml

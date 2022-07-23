@@ -1,0 +1,73 @@
+# -----POST-----
+post:
+  tags:
+    - test
+  description: POST APIテスト
+  requestBody:
+    description: user to create
+    content:
+      application/json:
+        schema:
+          $ref: "#/components/schemas/User"
+        example:
+          id: 362
+          name: Richard Roe
+  responses:
+    "200":
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              HelloUser:
+                type: string
+                example: Hello, userName
+    "400":
+      description: Bad Request
+    "500":
+      description: Internal Server Error
+
+# -----DELETE-----
+delete:
+  tags:
+    - test
+  description: DELETE APIテスト
+  requestBody:
+    description: user to create
+    content:
+      application/json:
+        schema:
+          $ref: "#/components/schemas/User"
+        example:
+          id: 362
+          name: Richard Roe
+  responses:
+    "200":
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              HelloUser:
+                type: string
+                example: Hello, userName
+    "400":
+      description: Bad Request
+    "500":
+      description: Internal Server Error
+
+# -----定数-----
+components:
+  schemas:
+    User:
+      type: object
+      required:
+        - id
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string

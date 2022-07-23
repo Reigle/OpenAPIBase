@@ -1,0 +1,25 @@
+get:
+  summary: GET APIテスト
+  operationId: test
+  description: |
+    テストAPI
+  tags:
+    - test
+  parameters:
+    - $ref: "../../../parameters/login/id.yaml"
+  responses:
+    "200":
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              result:
+                type: string
+                description: |
+                  APIの実行結果
+                enum:
+                  - "success"
+                  - "fail"
+          example:
+            result: success

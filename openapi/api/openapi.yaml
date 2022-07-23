@@ -1,0 +1,126 @@
+openapi: 3.0.0
+info:
+  contact:
+    email: xxx@xxxxx.xx
+    name: 問い合わせ
+    url: https://example.com:1234
+  description: API説明
+  termsOfService: https://example.com/terms_of_service
+  title: API名
+  version: "1.0"
+servers:
+- description: development
+  url: https://example.com:1234
+tags:
+- description: テスト
+  name: test
+paths:
+  /test?id={id}:
+    get:
+      description: |
+        テストAPI
+      operationId: test
+      parameters:
+      - description: |
+          ID
+        in: path
+        name: id
+        required: true
+        schema:
+          example: "1111"
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                result: success
+              schema:
+                $ref: '#/components/schemas/test_200_response'
+      summary: GET APIテスト
+      tags:
+      - test
+  /test:
+    delete:
+      description: DELETE APIテスト
+      requestBody:
+        content:
+          application/json:
+            example:
+              id: 362
+              name: Richard Roe
+            schema:
+              $ref: '#/components/schemas/User'
+        description: user to create
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_test_delete_200_response'
+          description: Success
+        "400":
+          description: Bad Request
+        "500":
+          description: Internal Server Error
+      tags:
+      - test
+    post:
+      description: POST APIテスト
+      requestBody:
+        content:
+          application/json:
+            example:
+              id: 362
+              name: Richard Roe
+            schema:
+              $ref: '#/components/schemas/User'
+        description: user to create
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_test_delete_200_response'
+          description: Success
+        "400":
+          description: Bad Request
+        "500":
+          description: Internal Server Error
+      tags:
+      - test
+components:
+  schemas:
+    User:
+      example:
+        name: name
+        id: 0
+      properties:
+        id:
+          format: int64
+          type: integer
+        name:
+          type: string
+      required:
+      - id
+      type: object
+    test_200_response:
+      example:
+        result: success
+      properties:
+        result:
+          description: |
+            APIの実行結果
+          enum:
+          - success
+          - fail
+          type: string
+      type: object
+    _test_delete_200_response:
+      example:
+        HelloUser: "Hello, userName"
+      properties:
+        HelloUser:
+          example: "Hello, userName"
+          type: string
+      type: object
