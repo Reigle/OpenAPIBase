@@ -1,0 +1,2 @@
+# OpenAPIBase
+OpenAPIのベースプロジェクト
